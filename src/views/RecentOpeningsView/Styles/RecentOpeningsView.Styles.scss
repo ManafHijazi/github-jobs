@@ -1,0 +1,192 @@
+@import '../../../assets/Theme/ColorsVariables.Style.scss';
+@import '../../../assets/Theme/GridsMixins.Style.scss';
+
+.recent-openings-wrapper {
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  .recent-openings-search-wrapper {
+    box-shadow: 0px 1px 2px 1px $c-gray;
+    background-color: $c-gray-light;
+    height: 4rem;
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 1rem;
+    position: fixed;
+    z-index: 9;
+    padding-right: 1rem;
+    align-items: center;
+    @include laptops-max {
+      width: 70%;
+    }
+    @include tablets-max {
+      width: 80%;
+    }
+    @include phones-max {
+      width: 90%;
+      height: 7.5rem;
+      justify-content: space-between;
+    }
+    .fileds-wrapper {
+      width: 80%;
+      @include tablets-max {
+        width: 80%;
+      }
+      @include phones-max {
+        width: 80%;
+      }
+      @include phones-xs-max {
+        width: 60%;
+      }
+      .MuiFormControl-root {
+        box-shadow: 0px 1px 1px 1px $c-gray;
+        background-color: $c-white;
+        margin-right: 1rem;
+        @include phones-max {
+          margin-right: 0;
+          margin-top: 0.5rem;
+        }
+      }
+    }
+    .action-wrapper {
+      width: 17%;
+      @include laptops-max {
+        width: 12%;
+      }
+      @include phones-max {
+        width: 30%;
+      }
+      .MuiButton-root {
+        background-color: $c-secondary;
+        color: $c-white;
+        width: 5.5rem;
+        height: 2.5rem;
+        font-size: 12px;
+        border-radius: 0.2rem;
+        font-weight: bold;
+        &:hover {
+          background-color: $c-secondary-light;
+        }
+      }
+    }
+  }
+  .recent-openings-cards-wrapper {
+    padding-top: 7rem;
+    width: 61%;
+    @include laptops-max {
+      width: 70%;
+    }
+    @include tablets-max {
+      width: 80%;
+    }
+    @include phones-max {
+      padding-top: 9rem;
+      width: 80%;
+    }
+    .section-title {
+      .MuiTypography-root {
+        font-size: 24px;
+        font-weight: bold;
+        padding-bottom: 1.5rem;
+      }
+    }
+    .recent-openings-card-component-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      .card-content-wrapper {
+        margin-right: -2rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-items: center;
+        @include phones-max {
+          margin-right: 0;
+        }
+      }
+      .card-title {
+        .MuiTypography-root {
+          font-size: 18px;
+          font-weight: bold;
+          max-width: 10rem;
+        }
+      }
+      .MuiSkeleton-root {
+        margin-bottom: 3rem;
+        min-height: 16rem;
+        width: 18.2%;
+        min-width: 18.2%;
+        border-radius: 0.6rem;
+        margin-right: 1rem;
+        @include laptops-max {
+          width: 30%;
+          min-width: 30%;
+        }
+        @include tablets-max {
+          width: 30%;
+          max-width: 30%;
+        }
+        @include phones-max {
+          width: 95%;
+          min-width: 95%;
+        }
+      }
+      .MuiCard-root {
+        margin-right: 1rem;
+        margin-bottom: 3rem;
+        padding: 0.3rem;
+        min-height: 16rem;
+        position: relative;
+        width: 17.2%;
+        @include laptops-l-max {
+          width: 21%;
+        }
+        @include laptops-max {
+          width: 29%;
+        }
+        @include tablets-max {
+          width: 29%;
+        }
+        @include phones-max {
+          width: 40%;
+        }
+        @include phones-s-max {
+          width: 100%;
+        }
+      }
+      .MuiPaper-rounded {
+        border-radius: 0.6rem;
+      }
+      .MuiPaper-elevation1 {
+        box-shadow: 0px 0px 4px 1px $c-gray;
+      }
+      .MuiCardActions-root {
+        position: absolute;
+        flex-direction: row-reverse;
+        bottom: 1rem;
+        right: 1rem;
+        .MuiButton-root {
+          background-color: $c-white;
+          border: 0.125rem solid $c-secondary;
+          color: $c-secondary;
+          width: 5rem;
+          height: 2.5rem;
+          font-size: 12px;
+          border-radius: 0.2rem;
+          font-weight: bolder;
+          &:hover {
+            background-color: $c-secondary-lighter;
+            border: 0.125rem solid $c-secondary-lighter;
+            color: $c-white;
+          }
+        }
+      }
+    }
+  }
+}
