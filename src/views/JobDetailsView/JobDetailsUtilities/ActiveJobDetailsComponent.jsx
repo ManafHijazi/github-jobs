@@ -4,7 +4,6 @@ import Skeleton from '@material-ui/lab/Skeleton';
 import '../Styles/JobDetailsView.scss';
 
 export const ActiveJobDetailsComponent = ({ activeJob, isJobLoading }) => {
-  console.log('activeJob: ', activeJob);
   return (
     <>
       {!isJobLoading && activeJob && (

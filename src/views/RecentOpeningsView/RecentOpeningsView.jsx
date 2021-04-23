@@ -25,7 +25,7 @@ export const RecentOpeningsView = () => {
   }, [getAllJobs]);
   const onFilterChange = (newValue) => {
     setFilter(newValue);
-    setPagination(0);
+    setPagination(1);
   };
   return (
     <div className='recent-openings-wrapper'>
