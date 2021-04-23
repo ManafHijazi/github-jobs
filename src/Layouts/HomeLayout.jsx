@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IconButton } from '@material-ui/core';
+import { Button, IconButton } from '@material-ui/core';
 import { useCallback } from 'react';
 import { GlobalHistory, languageChange } from '../Helper';
 import { SwitchRoute } from '../Helper/SwitchRoute';
@@ -34,6 +34,11 @@ export const HomeLayout = () => {
           }}>
           <img src={language === 'ar' ? usa : uae} alt='language' width='24px' />
         </IconButton>
+        <div className='view-content-button'>
+          <Button onClick={() => window.open('https://cors-anywhere.herokuapp.com/corsdemo')}>
+            Click me to view content
+          </Button>
+        </div>
       </div>
       <div className='app-container-wrapper'>
         <SwitchRoute routes={HomeRoutes} />

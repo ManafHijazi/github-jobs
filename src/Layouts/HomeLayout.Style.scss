@@ -13,6 +13,22 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    .view-content-button {
+      .MuiButton-root {
+        background-color: $c-white;
+        color: $c-black;
+        text-transform: capitalize;
+        @include tablets-max {
+          font-size: 11px;
+          padding: 0;
+          margin-right: 1rem;
+          margin-left: 1rem;
+        }
+      }
+      @include phones-max {
+        display: none;
+      }
+    }
     .app-logo {
       .logo-title {
         display: flex;
