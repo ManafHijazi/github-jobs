@@ -1,0 +1,269 @@
+@import '../../../assets/Theme/ColorsVariables.Style.scss';
+@import '../../../assets/Theme/GridsMixins.Style.scss';
+@import '../../../assets/Theme/TextsMixins.style.scss';
+
+.job-details-view-wrapper {
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  .job-skeleton-wrapper {
+    .MuiSkeleton-root {
+      margin-top: -3.5rem;
+      margin-bottom: -5.5rem;
+      width: 18rem;
+      height: 16rem;
+    }
+  }
+  .separator-h {
+    position: relative;
+    min-height: 1px;
+    width: 100%;
+    margin-bottom: 0.5rem;
+    &:after {
+      position: absolute;
+      left: 0;
+      top: 0;
+      content: ' ';
+      width: 100%;
+      height: 1px;
+      background-color: $c-gray-blue-light;
+    }
+  }
+  .separator-v {
+    position: relative;
+    height: 90%;
+    min-width: 1px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    &:after {
+      position: absolute;
+      left: 0;
+      top: 13px;
+      content: ' ';
+      width: 1px;
+      height: 90%;
+      background-color: $c-gray-blue-light;
+    }
+  }
+  .MuiCardContent-root:last-child {
+    padding-bottom: 1rem;
+  }
+  .jobs-details-container {
+    display: flex;
+    align-items: flex-start;
+    padding: 2rem;
+    .jobs-details-cards-wrapper {
+      .card-title {
+        .MuiTypography-root {
+          @include texts-truncate-two-line;
+          font-size: 18px;
+          font-weight: bold;
+          max-width: 12rem;
+          color: $c-primary;
+        }
+      }
+      .card-sub-title {
+        padding-bottom: 1.3rem;
+        .MuiTypography-root {
+          @include texts-truncate-two-line;
+          font-size: 14px;
+          max-width: 10rem;
+          color: $c-black-light;
+        }
+      }
+      .card-item {
+        .MuiTypography-root {
+          @include texts-truncate-two-line;
+          font-size: 14px;
+          max-width: 15rem;
+          font-weight: bold;
+          color: $c-black-light;
+        }
+      }
+      .card-content-wrapper {
+        height: calc(100vh - 300px);
+        min-width: 20rem;
+        overflow-y: auto;
+        padding: 1rem;
+        padding-top: 0.5rem;
+      }
+      .job-details-card {
+        .MuiCard-root {
+          margin-bottom: 1.5rem;
+          min-width: 18rem;
+          max-height: 16rem;
+          min-height: 8rem;
+          cursor: pointer;
+          &:hover {
+            background-color: $c-gray-lighter;
+          }
+        }
+        .MuiPaper-rounded {
+          border-radius: 0.4rem;
+        }
+        .MuiPaper-elevation1 {
+          box-shadow: 0px 0px 2px 2px $c-gray;
+        }
+      }
+    }
+    .jobs-details-content-wrapper {
+      margin: 1rem;
+      width: 50rem;
+      margin-top: 0.5rem;
+      overflow: hidden;
+      position: relative;
+      padding: 0.5rem;
+      padding-top: 0.1rem;
+      .active-job-details-wrapper {
+        border-radius: 0.4rem;
+        height: calc(100vh - 400px);
+        box-shadow: 0px 0px 3px 2px $c-gray !important;
+        padding: 1rem;
+        padding-top: 2.5rem;
+        overflow: hidden;
+        overflow-y: auto;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        align-items: flex-start;
+        min-height: 10rem;
+        .job-badge {
+          font-size: 14px;
+          font-weight: bold;
+          color: $c-black;
+          background-color: $c-gray-default;
+          padding-left: 1rem;
+          padding-right: 1rem;
+          border-radius: 1rem;
+          height: 1.5rem;
+          width: auto;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-left: 1rem;
+        }
+        .job-item {
+          width: 100%;
+          .job-title {
+            position: absolute;
+            background-color: $c-white;
+            top: 0.1rem;
+            padding-top: 1rem;
+            padding-bottom: 0.3rem;
+            color: $c-primary;
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            width: 94%;
+          }
+          .job-sub-title {
+            padding-bottom: 0.5rem;
+            padding-top: 1rem;
+            color: $c-primary;
+            font-size: 18px;
+            font-weight: bold;
+          }
+          .job-date {
+            padding-top: 0.5rem;
+            color: $c-gray-blue;
+            font-size: 14px;
+            font-weight: bold;
+          }
+          .job-description {
+            overflow-y: auto;
+            max-height: 8rem;
+          }
+          .job-Summary {
+            overflow: hidden;
+            border: 1px solid $c-gray;
+            width: 100%;
+            height: 8rem;
+            .summary-content {
+              display: flex;
+              justify-content: flex-start;
+              padding-left: 1rem;
+              padding-right: 1rem;
+              height: 100%;
+              .summary-content-section {
+                display: flex;
+                flex-direction: column;
+                width: 50%;
+                justify-content: space-evenly;
+                .sub-item-title {
+                  display: flex;
+                  .summary-key {
+                    width: 50%;
+                    font-size: 14px;
+                    font-weight: bold;
+                    color: $c-gray-blue-dark;
+                  }
+                  .summary-value {
+                    width: 50%;
+                    padding-left: 0.5rem;
+                    padding-right: 0.5rem;
+                    color: $c-gray-blue;
+                  }
+                }
+              }
+            }
+          }
+          .required-skills {
+            display: flex;
+          }
+        }
+      }
+      .MuiSkeleton-root {
+        width: 50rem;
+        margin-top: -14.5rem;
+        border-radius: 0.4rem;
+        height: 100vh;
+      }
+    }
+  }
+  .jobs-details-footer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 10rem;
+    background-color: $c-gray-default;
+    .footer-text {
+      .footer-title {
+        font-size: 24px;
+        font-weight: bold;
+      }
+      .footer-sub-title {
+        padding-top: 0.5rem;
+        color: $c-black-light;
+      }
+    }
+    .footer-actions {
+      display: flex;
+      .footer-linkedin {
+        .MuiIconButton-root {
+          background-color: #0077b5;
+          color: $c-white;
+          width: 2.7rem;
+          height: 2.7rem;
+          margin-left: 0.2rem;
+          margin-right: 0.2rem;
+        }
+      }
+      .footer-website {
+        .MuiIconButton-root {
+          background-color: #35465c;
+          color: $c-white;
+          width: 2.7rem;
+          height: 2.7rem;
+          margin-left: 0.2rem;
+          margin-right: 0.2rem;
+        }
+      }
+    }
+  }
+}

@@ -1,7 +1,6 @@
-import { HttpServices } from '../Helper';
+import { HttpServices, showError } from '../Helper';
 
-// I'm using heroku proxy server to get rid of the strict cors problem
-const baseUrl = 'https://cors-anywhere.herokuapp.com/https://jobs.github.com/';
+const baseUrl = '/';
 export const GetAllJobOpenings = async ({ description, location }, page) => {
   const queryList = [];
   if (description) queryList.push(`description=${description}`);
@@ -9,6 +8,13 @@ export const GetAllJobOpenings = async ({ description, location }, page) => {
   if (page) queryList.push(`page=${page}`);
   const result = await HttpServices.get(`${baseUrl}positions.json?${queryList.join('&')}`)
     .then((data) => data)
-    .catch((error) => error.response);
+    .catch((error) => showError(error.statusText));
+  return result;
+};
+
+export const GetAllJobOpeningsById = async (jobId) => {
+  const result = await HttpServices.get(`${baseUrl}positions/${jobId}.json`)
+    .then((data) => data)
+    .catch((error) => showError(error.statusText));
   return result;
 };

@@ -1,22 +1,24 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { PropTypes } from 'prop-types';
-import { Button, Card, CardActions, CardContent, Tooltip, Typography } from '@material-ui/core';
+import { Card, CardContent, Tooltip, Typography } from '@material-ui/core';
 import Skeleton from '@material-ui/lab/Skeleton';
-import { GlobalHistory } from '../../../Helper';
+import '../Styles/JobDetailsView.scss';
 
-export const RecentOpeningsCardComponent = ({ data, isLoading }) => {
+export const JobDetailsCardsComponent = ({ data, isLoading, onActiveJobChange }) => {
+  const nodeRef = useRef(null);
+
   return (
-    <div className='recent-openings-card-component-wrapper'>
+    <div ref={nodeRef} className='job-details-card'>
       <div className='card-content-wrapper'>
         {!isLoading &&
           data &&
           data.map((item, index) => (
-            <Card key={`jobCard-${index + 1}`} className={data.length > 5 ? 'is-full' : ''}>
+            <Card key={`jobCard-${index + 1}`} onClick={() => onActiveJobChange(item)}>
               <CardContent>
                 <Tooltip
                   aria-label='title'
                   title={(item.title && item.title) || 'N/A'}
-                  placement='top'>
+                  placement='left'>
                   <div className='card-title'>
                     <Typography>{(item.title && item.title) || 'N/A'}</Typography>
                   </div>
@@ -24,46 +26,35 @@ export const RecentOpeningsCardComponent = ({ data, isLoading }) => {
                 <Tooltip
                   aria-label='location'
                   title={(item.location && item.location) || 'N/A'}
-                  placement='bottom'>
-                  <div className='card-item'>
+                  placement='left'>
+                  <div className='card-sub-title'>
                     <Typography>{(item.location && item.location) || 'N/A'}</Typography>
                   </div>
                 </Tooltip>
                 <div className='separator-h' />
                 <div className='card-item'>
-                  <Typography>{(item.type && item.type) || 'N/A'}</Typography>
-                </div>
-                <div className='separator-h' />
-                <div className='card-item'>
                   <Typography>HTML, CSS & JavaScript</Typography>
                 </div>
               </CardContent>
-              <CardActions>
-                <Button onClick={() => GlobalHistory.push(`/home/job-details?id=${item.id}`)}>
-                  View
-                </Button>
-              </CardActions>
             </Card>
           ))}
         {isLoading &&
           Array.from(new Array(15)).map((item, index) => (
-            <Skeleton
-              width={205}
-              height={280}
-              variant='rect'
-              animation='wave'
-              key={`${index + 1}-skeleton`}
-            />
+            <div className='job-skeleton-wrapper' key={`${index + 1}-skeleton`}>
+              <Skeleton animation='wave' />
+            </div>
           ))}
       </div>
     </div>
   );
 };
-RecentOpeningsCardComponent.propTypes = {
+JobDetailsCardsComponent.propTypes = {
   data: PropTypes.instanceOf(Array),
   isLoading: PropTypes.bool,
+  onActiveJobChange: PropTypes.func,
 };
-RecentOpeningsCardComponent.defaultProps = {
+JobDetailsCardsComponent.defaultProps = {
   data: [],
   isLoading: false,
+  onActiveJobChange: () => {},
 };

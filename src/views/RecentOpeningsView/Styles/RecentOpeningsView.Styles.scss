@@ -10,6 +10,7 @@
   flex-direction: column;
   width: 100%;
   .pagination-wrapper {
+    padding: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -167,8 +168,14 @@
         }
       }
       .card-item {
+        .MuiTypography-root {
+          font-size: 15px;
+        }
         @include texts-truncate;
         color: $c-gray-blue;
+      }
+      .card-item:last-child {
+        padding-bottom: 3rem;
       }
       .MuiSkeleton-root {
         margin-bottom: 3rem;
@@ -196,21 +203,23 @@
         padding: 0.3rem;
         min-height: 16rem;
         position: relative;
-        width: 17.2%;
-        @include laptops-l-max {
-          width: 21%;
-        }
-        @include laptops-max {
-          width: 29%;
-        }
-        @include tablets-max {
-          width: 29%;
-        }
-        @include phones-max {
-          width: 40%;
-        }
-        @include phones-s-max {
-          width: 100%;
+        &.is-full {
+          width: 17.2%;
+          @include laptops-l-max {
+            width: 21%;
+          }
+          @include laptops-max {
+            width: 29%;
+          }
+          @include tablets-max {
+            width: 29%;
+          }
+          @include phones-max {
+            width: 40%;
+          }
+          @include phones-s-max {
+            width: 100%;
+          }
         }
       }
       .MuiPaper-rounded {
@@ -222,7 +231,7 @@
       .MuiCardActions-root {
         position: absolute;
         flex-direction: row-reverse;
-        bottom: 1rem;
+        bottom: 0.5rem;
         right: 1rem;
         .MuiButton-root {
           background-color: $c-white;
