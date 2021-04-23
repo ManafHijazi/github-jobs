@@ -1,0 +1,52 @@
+@import '../assets/Theme/ColorsVariables.Style.scss';
+@import '../assets/Theme/GridsMixins.Style.scss';
+@import '../assets/Theme/DirectionsMixins.Style.scss';
+
+.app-wrapper {
+  .app-header-wrapper {
+    background-color: $c-primary;
+    width: 100%;
+    height: 4rem;
+    position: fixed;
+    top: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .app-logo {
+      .logo-title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @include rtl {
+          flex-direction: row-reverse;
+        }
+      }
+      cursor: pointer;
+      width: 59%;
+      @include laptops-max {
+        width: 70%;
+      }
+      @include tablets-max {
+        width: 80%;
+      }
+      @include phones-max {
+        width: 50%;
+      }
+      color: $c-white;
+      display: flex;
+      align-items: center;
+      .logo-text {
+        font-size: 32px;
+        font-weight: bold;
+        padding-right: 0.3rem;
+      }
+      .logo-sub-text {
+        font-size: 26px;
+      }
+    }
+  }
+  .app-container-wrapper {
+    padding-top: 4rem;
+  }
+}

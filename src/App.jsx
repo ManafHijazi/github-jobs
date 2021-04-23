@@ -1,14 +1,20 @@
-import logo from './logo.svg';
+import React from 'react';
+import { Middleware, SetGlobalRerender } from './Helper';
+import { SwitchRoute } from './Helper/SwitchRoute';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { AppRoutes } from './routes/AppRoutes/AppRoute';
 import './App.scss';
+import { useState } from 'react';
 
 const App = () => {
+  const [render, setRender] = useState(false);
+  SetGlobalRerender(setRender, render);
+
   return (
-    <div className='App'>
-      <header className='App-header'>
-        <img src={logo} className='App-logo' alt='logo' />
-        <p>Wellcome!</p>
-      </header>
-    </div>
+    <Router>
+      <Middleware />
+      <SwitchRoute routes={AppRoutes} />
+    </Router>
   );
 };
 
