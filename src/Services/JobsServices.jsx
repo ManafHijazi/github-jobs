@@ -1,6 +1,6 @@
 import { HttpServices, showError } from '../Helper';
 
-const baseUrl = '/';
+const baseUrl = 'https://cors-anywhere.herokuapp.com/https://jobs.github.com/';
 export const GetAllJobOpenings = async ({ description, location }, page) => {
   const queryList = [];
   if (description) queryList.push(`description=${description}`);
