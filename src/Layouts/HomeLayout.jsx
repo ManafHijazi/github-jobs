@@ -34,6 +34,11 @@ export const HomeLayout = () => {
           }}>
           <img src={language === 'ar' ? usa : uae} alt='language' width='24px' />
         </IconButton>
+        <div className='view-content-icon'>
+          <IconButton onClick={() => window.open('https://cors-anywhere.herokuapp.com/corsdemo')}>
+            <span className='iconify' data-icon='mdi-eye' />
+          </IconButton>
+        </div>
         <div className='view-content-button'>
           <Button onClick={() => window.open('https://cors-anywhere.herokuapp.com/corsdemo')}>
             Click me to view content

@@ -18,15 +18,34 @@
         background-color: $c-white;
         color: $c-black;
         text-transform: capitalize;
+        color: $c-primary;
+        font-weight: bolder;
         @include tablets-max {
           font-size: 11px;
           padding: 0;
-          margin-right: 1rem;
-          margin-left: 1rem;
+          margin-right: 2rem;
+          margin-left: 2rem;
         }
       }
       @include phones-max {
         display: none;
+      }
+    }
+    .view-content-icon {
+      @include laptops-xxl-max {
+        display: none;
+      }
+      @include phones-max {
+        display: contents;
+      }
+      .MuiIconButton-label {
+        color: $c-primary;
+        width: 1.5rem;
+      }
+      .MuiIconButton-root {
+        width: 2rem;
+        height: 2rem;
+        background-color: $c-white;
       }
     }
     .app-logo {
@@ -34,8 +53,21 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        @include tablets-max {
+          padding-left: 2rem;
+        }
         @include rtl {
           flex-direction: row-reverse;
+          @include tablets-max {
+            padding-left: 0;
+            padding-right: 2rem;
+          }
+          @include phones-max {
+            padding: 0;
+          }
+        }
+        @include phones-max {
+          padding: 0;
         }
       }
       cursor: pointer;
