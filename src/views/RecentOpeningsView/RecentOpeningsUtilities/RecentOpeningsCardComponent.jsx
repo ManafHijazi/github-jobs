@@ -1,7 +1,8 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { Button, Card, CardActions, CardContent, Typography } from '@material-ui/core';
+import { Button, Card, CardActions, CardContent, Tooltip, Typography } from '@material-ui/core';
 import Skeleton from '@material-ui/lab/Skeleton';
+import { GlobalHistory } from '../../../Helper';
 
 export const RecentOpeningsCardComponent = ({ data, isLoading }) => {
   return (
@@ -11,12 +12,24 @@ export const RecentOpeningsCardComponent = ({ data, isLoading }) => {
           data.map((item, index) => (
             <Card key={`jobCard-${index + 1}`}>
               <CardContent>
-                <div className='card-title'>
-                  <Typography>Front end developer</Typography>
+                <Tooltip aria-label="title" title={(item.title && item.title) || 'N/A'} placement='top'>
+                  <div className='card-title'>
+                    <Typography>{(item.title && item.title) || 'N/A'}</Typography>
+                  </div>
+                </Tooltip>
+                <Tooltip aria-label="location" title={(item.location && item.location) || 'N/A'} placement='bottom'>
+                  <div className='card-item'>
+                    <Typography>{(item.location && item.location) || 'N/A'}</Typography>
+                  </div>
+                </Tooltip>
+                <div className='separator-h' />
+                <div className='card-item'>
+                  <Typography>{(item.type && item.type) || 'N/A'}</Typography>
                 </div>
+                <div className='separator-h' />
               </CardContent>
               <CardActions>
-                <Button>View</Button>
+                <Button onClick={()=>GlobalHistory.push('/home/job-detailsF')}>View</Button>
               </CardActions>
             </Card>
           ))}

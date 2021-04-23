@@ -1,5 +1,6 @@
 @import '../../../assets/Theme/ColorsVariables.Style.scss';
 @import '../../../assets/Theme/GridsMixins.Style.scss';
+@import '../../../assets/Theme/TextsMixins.style.scss';
 
 .recent-openings-wrapper {
   height: 100%;
@@ -8,6 +9,52 @@
   align-items: center;
   flex-direction: column;
   width: 100%;
+  .pagination-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .MuiButton-root {
+      font-size: 14px;
+      border-radius: 0.5rem;
+      padding: 0;
+      text-transform: capitalize;
+      min-width: 6rem;
+      color: $c-info;
+      &:disabled {
+        cursor: not-allowed;
+        pointer-events: initial;
+        color: $c-gray-dark;
+      }
+    }
+    .pagination-amount {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid $c-primary;
+      font-weight: bold;
+      font-size: 12px;
+      border-radius: 50%;
+      width: 1.5rem;
+      height: 1.5rem;
+      margin-left: 1.2rem;
+      margin-right: 0.5rem;
+    }
+  }
+  .separator-h {
+    position: relative;
+    min-height: 1px;
+    width: 100%;
+    margin-bottom: 1.5rem;
+    &:after {
+      position: absolute;
+      left: 0;
+      top: 0.3rem;
+      content: ' ';
+      width: 100%;
+      height: 1px;
+      background-color: $c-gray-blue-light;
+    }
+  }
   .recent-openings-search-wrapper {
     box-shadow: 0px 1px 2px 1px $c-gray;
     background-color: $c-gray-light;
@@ -111,11 +158,17 @@
         }
       }
       .card-title {
+        padding-bottom: 0.8rem;
         .MuiTypography-root {
+          @include texts-truncate-two-line;
           font-size: 18px;
           font-weight: bold;
           max-width: 10rem;
         }
+      }
+      .card-item {
+        @include texts-truncate;
+        color: $c-gray-blue;
       }
       .MuiSkeleton-root {
         margin-bottom: 3rem;
