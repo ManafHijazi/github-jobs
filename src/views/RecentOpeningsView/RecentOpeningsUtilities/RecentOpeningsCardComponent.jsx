@@ -1,10 +1,16 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { Button, Card, CardActions, CardContent, Tooltip, Typography } from '@material-ui/core';
 import Skeleton from '@material-ui/lab/Skeleton';
+import { useTranslation } from 'react-i18next';
 import { GlobalHistory } from '../../../Helper';
+import { Button, Card, CardActions, CardContent, Tooltip, Typography } from '@material-ui/core';
+
+const parentTranslationPath = 'RecentOpeningsView';
+const translationPath = '';
 
 export const RecentOpeningsCardComponent = ({ data, isLoading }) => {
+  const { t } = useTranslation(parentTranslationPath);
+
   return (
     <div className='recent-openings-card-component-wrapper'>
       <div className='card-content-wrapper'>
@@ -40,7 +46,7 @@ export const RecentOpeningsCardComponent = ({ data, isLoading }) => {
               </CardContent>
               <CardActions>
                 <Button onClick={() => GlobalHistory.push(`/home/job-details?id=${item.id}`)}>
-                  View
+                  {t(`${translationPath}view`)}
                 </Button>
               </CardActions>
             </Card>
@@ -60,8 +66,8 @@ export const RecentOpeningsCardComponent = ({ data, isLoading }) => {
   );
 };
 RecentOpeningsCardComponent.propTypes = {
-  data: PropTypes.instanceOf(Array),
   isLoading: PropTypes.bool,
+  data: PropTypes.instanceOf(Array),
 };
 RecentOpeningsCardComponent.defaultProps = {
   data: [],

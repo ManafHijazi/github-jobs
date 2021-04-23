@@ -1,14 +1,18 @@
 @import '../../../assets/Theme/ColorsVariables.Style.scss';
 @import '../../../assets/Theme/GridsMixins.Style.scss';
 @import '../../../assets/Theme/TextsMixins.style.scss';
+@import '../../../assets/Theme/DirectionsMixins.Style.scss';
 
 .job-details-view-wrapper {
   height: 100%;
+  width: 100%;
   display: flex;
   justify-content: flex-start;
-  align-items: center;
   flex-direction: column;
-  width: 100%;
+  align-items: center;
+  @include tablets-max {
+    align-items: initial;
+  }
   .job-skeleton-wrapper {
     .MuiSkeleton-root {
       margin-top: -3.5rem;
@@ -30,6 +34,24 @@
       width: 100%;
       height: 1px;
       background-color: $c-gray-blue-light;
+      &.pt-3 {
+        top: 2rem !important;
+      }
+    }
+  }
+  .separator-h-1 {
+    position: relative;
+    min-height: 1px;
+    width: 100%;
+    margin-bottom: 1rem;
+    &:after {
+      position: absolute;
+      left: 0;
+      top: 1.5rem;
+      content: ' ';
+      width: 100%;
+      height: 1px;
+      background-color: $c-gray-blue-light;
     }
   }
   .separator-v {
@@ -39,9 +61,13 @@
     padding-left: 1rem;
     padding-right: 1rem;
     &:after {
-      position: absolute;
       left: 0;
+      @include rtl {
+        right: 0;
+        left: initial;
+      }
       top: 13px;
+      position: absolute;
       content: ' ';
       width: 1px;
       height: 90%;
@@ -62,9 +88,6 @@
       min-height: calc(100vh - 100px);
     }
     .jobs-details-cards-wrapper {
-      @include tablets-max {
-        width: 100%;
-      }
       .card-title {
         .MuiTypography-root {
           @include texts-truncate-two-line;
@@ -117,6 +140,42 @@
           cursor: pointer;
           &:hover {
             background-color: $c-gray-lighter;
+          }
+          position: relative;
+          .card-progress {
+            position: absolute;
+            top: 2.3rem;
+            right: 2.3rem;
+            @include rtl {
+              right: initial;
+              left: 2.3rem;
+            }
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .outer-progress {
+              position: absolute;
+              z-index: 99;
+              .MuiCircularProgress-root {
+                color: $c-secondary-lightest;
+                width: 3.5rem !important;
+                height: 3.5rem !important;
+              }
+            }
+            .inner-progress {
+              position: absolute;
+              .MuiCircularProgress-root {
+                color: $c-gray;
+                width: 3.5rem !important;
+                height: 3.5rem !important;
+              }
+            }
+            .progress-value {
+              font-size: 14px;
+              font-weight: bold;
+              color: $c-gray-blue-dark;
+              margin-top: -0.2rem;
+            }
           }
         }
         .MuiPaper-rounded {
@@ -175,6 +234,10 @@
           justify-content: center;
           align-items: center;
           margin-left: 1rem;
+          @include rtl {
+            margin-right: 1rem;
+            margin-left: 0;
+          }
           @include phones-max {
             font-size: 12px;
             padding-left: 0.5rem;
@@ -220,6 +283,10 @@
           .job-description {
             overflow-y: auto;
             max-height: 8rem;
+            text-align: left;
+            @include rtl {
+              padding-left: 1rem;
+            }
           }
           .job-Summary {
             overflow: hidden;
@@ -260,13 +327,14 @@
                   }
                   .summary-value {
                     width: 50%;
-                    padding-left: 0.5rem;
+                    font-size: 12px;
                     @include phones-max {
                       font-size: 12px;
                     }
                     @include phones-s-max {
                       font-size: 10px;
                     }
+                    padding-left: 0.5rem;
                     padding-right: 0.5rem;
                     color: $c-gray-blue;
                   }
@@ -275,6 +343,7 @@
             }
           }
           .required-skills {
+            padding-top: 0.5rem;
             display: flex;
             overflow-x: auto;
             overflow-y: hidden;
@@ -297,6 +366,7 @@
     }
   }
   .jobs-details-footer {
+    z-index: 999;
     display: flex;
     justify-content: space-evenly;
     align-items: center;

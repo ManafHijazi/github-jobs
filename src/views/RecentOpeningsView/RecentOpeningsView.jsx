@@ -1,17 +1,23 @@
 import { Button, Typography } from '@material-ui/core';
 import React, { useCallback, useEffect, useState } from 'react';
 import { GetAllJobOpenings } from '../../Services/JobsServices';
+import { useTranslation } from 'react-i18next';
 import {
   RecentOpeningsCardComponent,
   RecentOpeningsSearchComponent,
 } from './RecentOpeningsUtilities';
 import './Styles/RecentOpeningsView.Styles.scss';
 
+const parentTranslationPath = 'RecentOpeningsView';
+const translationPath = '';
+
 export const RecentOpeningsView = () => {
+  const { t } = useTranslation(parentTranslationPath);
   const [isLoading, setIsLoading] = useState(false);
   const [jobsData, setJobsData] = useState(null);
   const [filter, setFilter] = useState({ description: '', location: '' });
   const [pagination, setPagination] = useState(1);
+  const isRtl = JSON.parse(localStorage.getItem('localization')).isRtl;
 
   const getAllJobs = useCallback(async () => {
     setIsLoading(true);
@@ -32,19 +38,19 @@ export const RecentOpeningsView = () => {
       <RecentOpeningsSearchComponent onFilterChange={onFilterChange} />
       <div className='recent-openings-cards-wrapper'>
         <div className='section-title'>
-          <Typography>Recent Openings</Typography>
+          <Typography>{t(`${translationPath}recent-openings`)}</Typography>
         </div>
         <RecentOpeningsCardComponent isLoading={isLoading} data={jobsData} />
       </div>
       <div className='pagination-wrapper'>
         <Button disabled={pagination === 1} onClick={() => setPagination(pagination - 1)}>
-          <span className='iconify' data-icon='mdi-chevron-double-left' />
-          Previous
+          <span className='iconify' data-icon={`mdi-chevron-double-${isRtl ? 'right' : 'left'}`} />
+          {t(`${translationPath}previous`)}
         </Button>
         <div className='pagination-amount'>{pagination}</div>
         <Button onClick={() => setPagination(pagination + 1)}>
-          Next
-          <span className='iconify' data-icon='mdi-chevron-double-right' />
+          {t(`${translationPath}next`)}
+          <span className='iconify' data-icon={`mdi-chevron-double-${isRtl ? 'left' : 'right'}`} />
         </Button>
       </div>
     </div>

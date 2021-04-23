@@ -1,7 +1,23 @@
+@import '~react-toastify/dist/ReactToastify.css';
+@import './assets/Theme/DirectionsMixins.Style.scss';
+
 .App {
   text-align: center;
 }
-
+.Toastify__toast {
+  margin-top: 3rem;
+}
+.MuiInputLabel-formControl {
+  @include rtl {
+    left: initial;
+    right: 1.3rem;
+  }
+}
+.PrivateNotchedOutline-legendLabelled-3 {
+  @include rtl {
+    text-align: right !important;
+  }
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;

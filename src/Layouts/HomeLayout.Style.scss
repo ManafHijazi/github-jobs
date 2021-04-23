@@ -1,5 +1,6 @@
 @import '../assets/Theme/ColorsVariables.Style.scss';
 @import '../assets/Theme/GridsMixins.Style.scss';
+@import '../assets/Theme/DirectionsMixins.Style.scss';
 
 .app-wrapper {
   .app-header-wrapper {
@@ -13,8 +14,16 @@
     align-items: center;
     justify-content: center;
     .app-logo {
+      .logo-title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @include rtl {
+          flex-direction: row-reverse;
+        }
+      }
       cursor: pointer;
-      width: 60%;
+      width: 59%;
       @include laptops-max {
         width: 70%;
       }

@@ -1,9 +1,15 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import Skeleton from '@material-ui/lab/Skeleton';
+import { useTranslation } from 'react-i18next';
 import '../Styles/JobDetailsView.scss';
 
+const parentTranslationPath = 'JobDetailsView';
+const translationPath = '';
+
 export const ActiveJobDetailsComponent = ({ activeJob, isJobLoading }) => {
+  const { t } = useTranslation(parentTranslationPath);
+
   return (
     <>
       {!isJobLoading && activeJob && (
@@ -18,7 +24,7 @@ export const ActiveJobDetailsComponent = ({ activeJob, isJobLoading }) => {
             </div>
           </div>
           <div className='job-item'>
-            <div className='job-sub-title'>Description</div>
+            <div className='job-sub-title'>{t(`${translationPath}description`)}</div>
             <div className='job-description'>
               <div
                 dangerouslySetInnerHTML={{
@@ -28,7 +34,7 @@ export const ActiveJobDetailsComponent = ({ activeJob, isJobLoading }) => {
             </div>
           </div>
           <div className='job-item'>
-            <div className='job-sub-title'>Requirements</div>
+            <div className='job-sub-title'>{t(`${translationPath}requirements`)}</div>
             <div className='job-description'>
               <div
                 dangerouslySetInnerHTML={{
@@ -74,7 +80,7 @@ export const ActiveJobDetailsComponent = ({ activeJob, isJobLoading }) => {
             </div>
           </div>
           <div className='job-item'>
-            <div className='job-sub-title'>Required skills</div>
+            <div className='job-sub-title'>{t(`${translationPath}required-skills`)}</div>
             <div className='required-skills'>
               <div className='job-badge'>Css</div>
               <div className='job-badge'>HTML</div>
@@ -83,13 +89,15 @@ export const ActiveJobDetailsComponent = ({ activeJob, isJobLoading }) => {
               <div className='job-badge'>Js</div>
             </div>
           </div>
+          <div className='separator-h-1' />
           <div className='job-item'>
-            <div className='job-sub-title'>Languages</div>
+            <div className='job-sub-title'>{t(`${translationPath}languages`)}</div>
             <div className='required-skills'>
               <div className='job-badge'>En - Full professional proficiency</div>
               <div className='job-badge'>Ar - Full working proficiency</div>
             </div>
           </div>
+          <div className='separator-h-1' />
         </div>
       )}
       {isJobLoading && <Skeleton animation='wave' />}

@@ -1,6 +1,7 @@
 @import '../../../assets/Theme/ColorsVariables.Style.scss';
 @import '../../../assets/Theme/GridsMixins.Style.scss';
 @import '../../../assets/Theme/TextsMixins.style.scss';
+@import '../../../assets/Theme/DirectionsMixins.Style.scss';
 
 .recent-openings-wrapper {
   height: 100%;
@@ -39,6 +40,10 @@
       height: 1.5rem;
       margin-left: 1.2rem;
       margin-right: 0.5rem;
+      @include rtl {
+        margin-right: 1.2rem;
+        margin-left: 0.5rem;
+      }
     }
   }
   .separator-h {
@@ -66,8 +71,8 @@
     padding-left: 1rem;
     position: fixed;
     z-index: 9;
-    padding-right: 1rem;
     align-items: center;
+    padding-right: 1rem;
     @include laptops-max {
       width: 70%;
     }
@@ -94,6 +99,10 @@
         box-shadow: 0px 1px 1px 1px $c-gray;
         background-color: $c-white;
         margin-right: 1rem;
+        @include rtl {
+          margin-left: 1rem;
+          margin-right: 0;
+        }
         @include phones-max {
           margin-right: 0;
           margin-top: 0.5rem;
@@ -150,6 +159,10 @@
       width: 100%;
       .card-content-wrapper {
         margin-right: -2rem;
+        @include rtl {
+          margin-left: -2rem;
+          margin-right: 0;
+        }
         display: flex;
         flex-wrap: wrap;
         justify-content: flex-start;
@@ -184,6 +197,10 @@
         min-width: 18.2%;
         border-radius: 0.6rem;
         margin-right: 1rem;
+        @include rtl {
+          margin-left: 1rem;
+          margin-right: 0;
+        }
         @include laptops-max {
           width: 30%;
           min-width: 30%;
@@ -199,6 +216,10 @@
       }
       .MuiCard-root {
         margin-right: 1rem;
+        @include rtl {
+          margin-left: 1rem;
+          margin-right: 0;
+        }
         margin-bottom: 3rem;
         padding: 0.3rem;
         min-height: 16rem;
@@ -233,6 +254,10 @@
         flex-direction: row-reverse;
         bottom: 0.5rem;
         right: 1rem;
+        @include rtl {
+          right: initial;
+          left: 1rem;
+        }
         .MuiButton-root {
           background-color: $c-white;
           border: 0.125rem solid $c-secondary;

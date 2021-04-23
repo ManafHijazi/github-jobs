@@ -3,9 +3,14 @@ import { IconButton } from '@material-ui/core';
 import { ActiveJobDetailsComponent, JobDetailsCardsComponent } from './JobDetailsUtilities';
 import { GetAllJobOpenings, GetAllJobOpeningsById } from '../../Services/JobsServices';
 import { GetParams } from '../../Helper';
+import { useTranslation } from 'react-i18next';
 import './Styles/JobDetailsView.scss';
 
+const parentTranslationPath = 'JobDetailsView';
+const translationPath = '';
+
 export const JobDetailsView = () => {
+  const { t } = useTranslation(parentTranslationPath);
   const [isLoading, setIsLoading] = useState(false);
   const [isJobLoading, setIsJobLoading] = useState(false);
   const [jobsData, setJobsData] = useState(null);
@@ -59,8 +64,8 @@ export const JobDetailsView = () => {
       </div>
       <div className='jobs-details-footer'>
         <div className='footer-text'>
-          <div className='footer-title'>Follow us</div>
-          <div className='footer-sub-title'>Engage with us</div>
+          <div className='footer-title'>{t(`${translationPath}follow-us`)}</div>
+          <div className='footer-sub-title'>{t(`${translationPath}engage-with-us`)}</div>
         </div>
         <div className='footer-actions'>
           <div className='footer-linkedin'>
