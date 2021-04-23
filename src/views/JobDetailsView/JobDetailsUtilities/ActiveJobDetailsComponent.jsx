@@ -44,36 +44,36 @@ export const ActiveJobDetailsComponent = ({ activeJob, isJobLoading }) => {
             </div>
           </div>
           <div className='job-item'>
-            <div className='job-sub-title'>Summary</div>
+            <div className='job-sub-title'>{t(`${translationPath}summary`)}</div>
             <div className='job-Summary'>
               <div className='summary-content'>
                 <div className='summary-content-section'>
                   <div className='sub-item-title'>
-                    <div className='summary-key'> Salary range:</div>
-                    <div className='summary-value'>750 - 1100</div>
+                    <div className='summary-key'> {t(`${translationPath}salary-range`)}: </div>
+                    <div className='summary-value'>N/A</div>
                   </div>
                   <div className='sub-item-title'>
-                    <div className='summary-key'>Industry: </div>
-                    <div className='summary-value'>Computer software</div>
+                    <div className='summary-key'>{t(`${translationPath}industry`)}: </div>
+                    <div className='summary-value'>N/A</div>
                   </div>
                   <div className='sub-item-title'>
-                    <div className='summary-key'>Experince required: </div>
-                    <div className='summary-value'>1 year(s) minimum</div>
+                    <div className='summary-key'>{t(`${translationPath}experince-required`)}: </div>
+                    <div className='summary-value'>N/A</div>
                   </div>
                 </div>
                 <div className='separator-v' />
                 <div className='summary-content-section'>
                   <div className='sub-item-title'>
-                    <div className='summary-key'>Major:</div>
-                    <div className='summary-value'>Computer and information systems</div>
+                    <div className='summary-key'>{t(`${translationPath}major`)}:</div>
+                    <div className='summary-value'>N/A</div>
                   </div>
                   <div className='sub-item-title'>
-                    <div className='summary-key'>Career level: </div>
-                    <div className='summary-value'>Junior</div>
+                    <div className='summary-key'>{t(`${translationPath}career-level`)}: </div>
+                    <div className='summary-value'>N/A</div>
                   </div>
                   <div className='sub-item-title'>
-                    <div className='summary-key'>Minimum GPA: </div>
-                    <div className='summary-value'>90</div>
+                    <div className='summary-key'>{t(`${translationPath}minimum-gpa`)}: </div>
+                    <div className='summary-value'>N/A</div>
                   </div>
                 </div>
               </div>
