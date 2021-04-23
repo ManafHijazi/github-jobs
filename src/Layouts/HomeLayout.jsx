@@ -16,8 +16,8 @@ export const HomeLayout = () => {
   return (
     <div className='app-wrapper'>
       <div className='app-header-wrapper'>
-        <div className='app-logo' onClick={() => GlobalHistory.push('/home')}>
-          <div className='logo-title'>
+        <div className='app-logo'>
+          <div className='logo-title' onClick={() => GlobalHistory.push('/home')}>
             <div className='logo-text'>GitHub</div>
             <div className='logo-sub-text'>Jobs</div>
           </div>

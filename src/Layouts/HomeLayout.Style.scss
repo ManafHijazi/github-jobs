@@ -50,6 +50,7 @@
     }
     .app-logo {
       .logo-title {
+        cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -70,7 +71,6 @@
           padding: 0;
         }
       }
-      cursor: pointer;
       width: 49%;
       @include laptops-max {
         width: 50%;
