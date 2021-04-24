@@ -1,7 +1,7 @@
 import { HttpServices, showError } from '../Helper';
 
 // I'm using https://cors-anywhere.herokuapp.com/ proxy to bypass the CORS error
-const baseUrl = 'https://thingproxy.freeboard.io/fetch/https://jobs.github.com/';
+const baseUrl = 'https://cors-anywhere.herokuapp.com/https://jobs.github.com/';
 export const GetAllJobOpenings = async ({ description, location }, page) => {
   const queryList = [];
   if (description) queryList.push(`description=${description}`);
