@@ -17,6 +17,9 @@
     .MuiSkeleton-root {
       margin-top: -3.5rem;
       margin-bottom: -5.5rem;
+      @include laptops-max {
+        margin-bottom: -1.5rem;
+      }
       width: 18rem;
       height: 16rem;
     }

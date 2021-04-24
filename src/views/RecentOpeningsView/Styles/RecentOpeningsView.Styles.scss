@@ -11,6 +11,11 @@
   flex-direction: column;
   width: 100%;
   .pagination-wrapper {
+    margin-left: -3rem;
+    @include rtl {
+      margin-left: 0;
+      margin-right: -3rem;
+    }
     padding: 2rem;
     display: flex;
     align-items: center;
@@ -222,7 +227,8 @@
         }
         margin-bottom: 3rem;
         padding: 0.3rem;
-        min-height: 16rem;
+        min-height: 17rem;
+        max-height: 17rem;
         position: relative;
         &.is-full {
           width: 17.2%;
@@ -253,7 +259,7 @@
         position: absolute;
         flex-direction: row-reverse;
         bottom: 0.5rem;
-        right: 1rem;
+        right: 0.5rem;
         @include rtl {
           right: initial;
           left: 1rem;
@@ -263,7 +269,7 @@
           border: 0.125rem solid $c-secondary;
           color: $c-secondary;
           width: 5rem;
-          height: 2.5rem;
+          height: 2.3rem;
           font-size: 12px;
           border-radius: 0.2rem;
           font-weight: bolder;

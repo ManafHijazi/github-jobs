@@ -41,7 +41,7 @@ export const RecentOpeningsCardComponent = ({ data, isLoading }) => {
                 </div>
                 <div className='separator-h' />
                 <div className='card-item'>
-                  <Typography>HTML, CSS & JavaScript</Typography>
+                  <Typography>HTML, CSS & Js</Typography>
                 </div>
               </CardContent>
               <CardActions>
