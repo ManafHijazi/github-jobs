@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { IconButton } from '@material-ui/core';
 import { ActiveJobDetailsComponent, JobDetailsCardsComponent } from './JobDetailsUtilities';
 import { GetAllJobOpenings, GetAllJobOpeningsById } from '../../Services/JobsServices';
@@ -13,20 +13,26 @@ export const JobDetailsView = () => {
   const { t } = useTranslation(parentTranslationPath);
   const [isLoading, setIsLoading] = useState(false);
   const [isJobLoading, setIsJobLoading] = useState(false);
-  const [jobsData, setJobsData] = useState(null);
+  const [firstLoaded, setFirstLoaded] = useState(false);
+  const [jobsData, setJobsData] = useState({ result: [] });
   const [filter] = useState({ description: '', location: '' });
   const [activeJob, setActiveJob] = useState(null);
+  const [pagination, setPagination] = useState(1);
+  const cardContainer = useRef(null);
 
   const getAllJobs = useCallback(async () => {
     setIsLoading(true);
-    const result = await GetAllJobOpenings(filter);
+    setFirstLoaded(false);
+    const result = await GetAllJobOpenings(filter, pagination);
     if (!(result && result.status && result.status !== 200)) {
-      setJobsData(result.data);
-    } else {
-      setJobsData([]);
-    }
+      if (pagination === 1) setJobsData({ result: result.data });
+      else
+        setJobsData((item) => ({
+          result: item.result.concat(result.data),
+        }));
+    } else setJobsData({ result: [] });
     setIsLoading(false);
-  }, [filter]);
+  }, [filter, pagination]);
 
   const getJobById = useCallback(async () => {
     setIsJobLoading(true);
@@ -48,12 +54,22 @@ export const JobDetailsView = () => {
     setActiveJob(activeItem);
   }, []);
 
+  const scrollHandler = (e) => {
+    setFirstLoaded(true);
+    if (e.target.scrollTop + e.target.clientHeight >= e.target.scrollHeight && firstLoaded)
+      setPagination(pagination + 1);
+  };
+
   return (
     <div className='job-details-view-wrapper'>
       <div className='jobs-details-container'>
-        <div className='jobs-details-cards-wrapper'>
+        <div
+          className='jobs-details-cards-wrapper'
+          ref={cardContainer}
+          onScroll={scrollHandler}
+          onScrollCapture={scrollHandler}>
           <JobDetailsCardsComponent
-            data={jobsData}
+            data={jobsData && jobsData.result}
             isLoading={isLoading}
             onActiveJobChange={onActiveJobChange}
           />

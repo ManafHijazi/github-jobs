@@ -13,44 +13,48 @@ export const JobDetailsCardsComponent = ({ data, isLoading, onActiveJobChange })
       <div className='card-content-wrapper'>
         {!isLoading &&
           data &&
-          data.map((item, index) => (
-            <Card key={`jobCard-${index + 1}`} onClick={() => onActiveJobChange(item)}>
-              <CardContent>
-                <Tooltip
-                  aria-label='title'
-                  placement={isRtl ? 'right' : 'left'}
-                  title={(item.title && item.title) || 'N/A'}>
-                  <div className='card-title'>
-                    <Typography>{(item.title && item.title) || 'N/A'}</Typography>
-                  </div>
-                </Tooltip>
-                <Tooltip
-                  aria-label='location'
-                  placement={isRtl ? 'right' : 'left'}
-                  title={(item.location && item.location) || 'N/A'}>
-                  <div className='card-sub-title'>
-                    <Typography>{(item.location && item.location) || 'N/A'}</Typography>
-                  </div>
-                </Tooltip>
-                <div className='card-progress'>
-                  <div className='outer-progress'>
-                    <CircularProgress
-                      variant='determinate'
-                      value={Math.floor(Math.random() * 100)}
-                    />
-                  </div>
-                  <div className='inner-progress'>
-                    <CircularProgress variant='determinate' value={100} />
-                  </div>
-                  <div className='progress-value'>{`${Math.floor(Math.random() * 100)}%`}</div>
-                </div>
-                <div className='separator-h' />
-                <div className='card-item'>
-                  <Typography>HTML, CSS & JavaScript</Typography>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+          data.length > 0 &&
+          data.map(
+            (item, index) =>
+              item && (
+                <Card key={`jobCard-${index + 1}`} onClick={() => onActiveJobChange(item)}>
+                  <CardContent>
+                    <Tooltip
+                      aria-label='title'
+                      placement={isRtl ? 'right' : 'left'}
+                      title={(item.title && item.title) || 'N/A'}>
+                      <div className='card-title'>
+                        <Typography>{(item.title && item.title) || 'N/A'}</Typography>
+                      </div>
+                    </Tooltip>
+                    <Tooltip
+                      aria-label='location'
+                      placement={isRtl ? 'right' : 'left'}
+                      title={(item.location && item.location) || 'N/A'}>
+                      <div className='card-sub-title'>
+                        <Typography>{(item.location && item.location) || 'N/A'}</Typography>
+                      </div>
+                    </Tooltip>
+                    <div className='card-progress'>
+                      <div className='outer-progress'>
+                        <CircularProgress
+                          variant='determinate'
+                          value={Math.floor(Math.random() * 100)}
+                        />
+                      </div>
+                      <div className='inner-progress'>
+                        <CircularProgress variant='determinate' value={100} />
+                      </div>
+                      <div className='progress-value'>{`${Math.floor(Math.random() * 100)}%`}</div>
+                    </div>
+                    <div className='separator-h' />
+                    <div className='card-item'>
+                      <Typography>HTML, CSS & JavaScript</Typography>
+                    </div>
+                  </CardContent>
+                </Card>
+              )
+          )}
         {isLoading &&
           Array.from(new Array(15)).map((item, index) => (
             <div className='job-skeleton-wrapper' key={`${index + 1}-skeleton`}>
