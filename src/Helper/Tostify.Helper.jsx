@@ -1,5 +1,7 @@
 import { toast } from 'react-toastify';
 
+// Methods to show error and success messages
+
 export const showSuccess = (message, conifgration = { autoClose: 3000 }) =>
   toast.success(message, conifgration);
 

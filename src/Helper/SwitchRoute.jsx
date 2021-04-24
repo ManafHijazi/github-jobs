@@ -2,6 +2,7 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
+// React component to navigate through views
 export const SwitchRoute = ({ routes }) => {
   const route = routes.find((f) => f.isDefault === true);
 

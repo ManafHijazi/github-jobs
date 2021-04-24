@@ -5,6 +5,7 @@ import RecentOpeningsAr from '../views/RecentOpeningsView/I18n/ar.json';
 import JobDetailsEn from '../views/JobDetailsView/I18n/en.json';
 import JobDetailsAr from '../views/JobDetailsView/I18n/ar.json';
 
+// A global method for localization
 export const localizationInit = () => {
   i18next.init({
     react: {

@@ -54,6 +54,7 @@ export const JobDetailsView = () => {
     setActiveJob(activeItem);
   }, []);
 
+  // Add more data to the result array (Scroll pagination method)
   const scrollHandler = (e) => {
     setFirstLoaded(true);
     if (e.target.scrollTop + e.target.clientHeight >= e.target.scrollHeight && firstLoaded)
